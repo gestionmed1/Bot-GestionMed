@@ -16,6 +16,11 @@ class Settings(BaseSettings):
     # URL directa para dejar reseña en Google (desde Google Business Profile)
     GOOGLE_REVIEW_URL: str = "https://g.page/r/XXXXXXXX/review"
 
+    # ── Email ─────────────────────────────────────────────────────────────
+    EMAIL_FROM: str = "grupogestionmed@outlook.com"
+    EMAIL_TO: str = "grupogestionmed@outlook.com"
+    EMAIL_PASSWORD: str = ""  # contraseña de tu Outlook
+
     # ── App ───────────────────────────────────────────────────────────────
     APP_HOST: str = "0.0.0.0"
     APP_PORT: int = 8000

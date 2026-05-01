@@ -224,6 +224,12 @@ def process_booking(instagram_id: str, text: str, db: Session) -> str:
             conv.state = STATE_MENU
             _save_temp(conv, {})
             db.commit()
+            try:
+                from bot.email_sender import send_appointment_email
+                send_appointment_email(data)
+            except Exception as e:
+                import logging
+                logging.getLogger(__name__).error("Error email: %s", e)
             return MSG_CONFIRMED.format(**data)
 
         elif text_clean.upper() in ("NO", "N", "CANCELAR"):
