@@ -4,12 +4,12 @@ from config import settings
 
 logger = logging.getLogger(__name__)
 
-GRAPH_API = "https://graph.facebook.com/v19.0"
+GRAPH_API = "https://graph.instagram.com/v21.0"
 
 
 async def send_message(recipient_id: str, text: str) -> bool:
     """Envía un mensaje de texto por Instagram DM."""
-    url = f"{GRAPH_API}/me/messages"
+    url = f"{GRAPH_API}/{settings.PAGE_ID}/messages"
     payload = {
         "recipient": {"id": recipient_id},
         "message": {"text": text},
@@ -32,7 +32,7 @@ async def send_message(recipient_id: str, text: str) -> bool:
 
 async def send_quick_replies(recipient_id: str, text: str, replies: list[dict]) -> bool:
     """Envía un mensaje con opciones de respuesta rápida."""
-    url = f"{GRAPH_API}/me/messages"
+    url = f"{GRAPH_API}/{settings.PAGE_ID}/messages"
     payload = {
         "recipient": {"id": recipient_id},
         "message": {
